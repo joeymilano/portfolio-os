@@ -54,18 +54,14 @@ export default function App() {
       <header className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${isHero ? "" : "lg:bg-ink/60 lg:backdrop-blur-xl lg:border-b lg:border-white/[0.05]"}`}>
         <div className={`max-w-6xl mx-auto flex items-center justify-between px-6 md:px-10 ${isHero ? "py-5" : "py-4 lg:py-4 pt-16 lg:pt-4"}`}>
           <div className="flex items-center gap-3">
-            <span className="grid place-items-center w-8 h-8 rounded-[9px] bg-academy/90 text-ink font-semibold text-[13px]">
-              1%
-            </span>
-            <div className="leading-tight">
-              <div className="font-medium text-[14px] tracking-tight">{BRAND.nameEN}</div>
-              <div className="font-mono text-[8.5px] text-fg3 tracking-[0.14em] mt-0.5 uppercase">
-                1% Design Lab · Academy
-              </div>
+            <img src="./logo-mark.png" alt="1% Design Lab" className="w-8 h-8 rounded-[9px]" />
+            <div className="leading-tight flex items-baseline gap-2.5">
+              <span className="font-semibold text-[15px] tracking-[-0.03em]">1% Design Lab</span>
+              <span className="font-mono text-[10px] text-fg2 tracking-[0.08em]">梦想管理局</span>
             </div>
           </div>
           <div className="flex items-center gap-2.5">
-            <span className="tag !text-[10px] hidden sm:inline-flex">{BRAND.org} 出品</span>
+            <span className="tag !text-[10px] hidden sm:inline-flex">{BRAND.nameEN} · ACADEMY</span>
             <span className="tag tag-gold !text-[10px]">智能体涌现奖 · 参赛演示</span>
           </div>
         </div>
