@@ -34,7 +34,7 @@ export default function Timeline({ onNext }) {
           <div>
             <div className="eyebrow mb-2">{TIMELINE.windowLabel}</div>
             <div className="flex items-baseline gap-3">
-              <span className="font-display font-extrabold text-[72px] md:text-[86px] leading-none gold-text tracking-tight tabular-nums">
+              <span className="font-serif-display font-semibold text-[72px] md:text-[86px] leading-none text-hot tracking-tight tabular-nums">
                 {Math.round(shown)}
               </span>
               <div className="pb-2">

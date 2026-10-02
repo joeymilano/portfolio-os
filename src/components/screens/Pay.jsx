@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { ShieldCheck, Wallet, CreditCard } from "lucide-react"
 import { fmtPrice, orderNo } from "../../data/agent"
 import { ScreenHead } from "../ui"
@@ -43,10 +43,9 @@ export default function Pay({ order, onNext }) {
         </div>
 
         <div className="bg-[#0d0d15] p-6 md:p-8">
-          <AnimatePresence mode="wait">
             {/* ---------- 确认页 ---------- */}
             {phase === "confirm" && (
-              <motion.div key="confirm" exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}>
+              <div key="confirm" className="fade-up">
                 {/* 金额 */}
                 <div className="text-center py-4 mb-2">
                   <div className="font-mono text-[11px] text-white/40 mb-2">订单金额</div>
@@ -102,12 +101,12 @@ export default function Pay({ order, onNext }) {
                 >
                   确认付款 {fmtPrice(service.price)}
                 </button>
-              </motion.div>
+              </div>
             )}
 
             {/* ---------- 处理中 ---------- */}
             {phase === "paying" && (
-              <motion.div key="paying" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-24 flex flex-col items-center">
+              <div key="paying" className="py-24 flex flex-col items-center fade-up">
                 <div className="relative w-16 h-16 mb-6">
                   <div className="absolute inset-0 rounded-full border-[3px] border-white/10" />
                   <div className="absolute inset-0 rounded-full border-[3px] border-transparent border-t-[#1677FF] animate-spin" />
@@ -115,12 +114,12 @@ export default function Pay({ order, onNext }) {
                 </div>
                 <div className="text-white/75 text-[14px]">正在通过支付宝安全验证…</div>
                 <div className="font-mono text-[10.5px] text-white/30 mt-2">指纹校验 · SMS · 风控 3 要素</div>
-              </motion.div>
+              </div>
             )}
 
             {/* ---------- 成功 ---------- */}
             {phase === "success" && (
-              <motion.div key="success" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="py-6 flex flex-col items-center text-center">
+              <div key="success" className="py-6 flex flex-col items-center text-center fade-up">
                 <motion.div
                   initial={{ scale: 0, rotate: -30 }}
                   animate={{ scale: 1, rotate: 0 }}
@@ -155,9 +154,8 @@ export default function Pay({ order, onNext }) {
                 </div>
 
                 <button className="btn-gold w-full" onClick={onNext}>查看规划总览 →</button>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
         </div>
       </motion.div>
 

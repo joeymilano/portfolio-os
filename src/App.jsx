@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "motion/react"
 import Atmosphere from "./components/Atmosphere"
 import Rail from "./components/Rail"
 import Hero from "./components/screens/Hero"
@@ -70,17 +69,9 @@ export default function App() {
       {!isHero && <Rail current={step} visited={visited} onJump={go} />}
 
       <main className={`relative z-10 px-6 md:px-10 ${isHero ? "" : "pt-28 lg:pt-28 pb-20 lg:pl-64"} transition-all`}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0, y: 34, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -22, filter: "blur(6px)" }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {screens[step]}
-          </motion.div>
-        </AnimatePresence>
+        <div key={step} className="fade-up">
+          {screens[step]}
+        </div>
       </main>
 
       {/* 页脚 */}

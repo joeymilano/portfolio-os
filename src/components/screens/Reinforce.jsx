@@ -51,6 +51,17 @@ export default function Reinforce({ onNext }) {
                 核心行动 · 直接补 F2
               </span>
             )}
+            {r.primary && (
+              <div className="relative -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-[13px] group">
+                <img
+                  src="./assets/work/journey-map.webp"
+                  alt="新项目参考意象 · 用户旅程图"
+                  className="w-full h-32 object-cover work-img"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink2 via-transparent to-transparent" />
+                <span className="absolute bottom-2.5 left-4 tag !text-[9.5px]">参考意象 · Service Journey</span>
+              </div>
+            )}
             <div className="flex items-center justify-between mb-4">
               <span className={`tag !text-[10.5px] ${r.priority.startsWith("P0") ? "tag-red" : "tag-gold"}`}>
                 {r.priority}

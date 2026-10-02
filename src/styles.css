@@ -43,7 +43,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-ink);
+  background:
+    radial-gradient(120% 60% at 50% -12%, #171715 0%, transparent 56%),
+    var(--color-ink);
+  background-color: var(--color-ink);
   color: var(--color-fg);
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
@@ -79,6 +82,21 @@ body {
 .accent-text { color: var(--color-academy); }
 .mint-text { color: var(--color-studio); }
 
+/* 热橙渐变数字（关键数值专用） */
+.text-hot {
+  background: linear-gradient(135deg, #ff8a5e 0%, #ff4a2e 55%, #d63a20 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 中文大标题衬线（思源宋体子集，编辑质感） */
+.font-serif-display {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
 /* 1DL label 系统：mono 小写元数据 */
 .eyebrow {
   font-family: var(--font-mono);
@@ -98,6 +116,7 @@ body {
   background: var(--color-ink2);
   border: 1px solid rgba(237, 237, 232, 0.12);
   border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(237, 237, 232, 0.035);
 }
 
 .glass-hover {
@@ -184,7 +203,7 @@ body {
 .drift-a { animation: drift-a 26s ease-in-out infinite; }
 .drift-b { animation: drift-b 32s ease-in-out infinite; }
 
-/* film grain（极淡） */
+/* film grain（静态，避免常驻动画抢占合成） */
 .grain {
   position: fixed;
   inset: -50%;
@@ -192,14 +211,6 @@ body {
   pointer-events: none;
   opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain-shift 0.9s steps(4) infinite;
-}
-@keyframes grain-shift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2%, 3%); }
-  50% { transform: translate(3%, -2%); }
-  75% { transform: translate(-3%, -3%); }
-  100% { transform: translate(2%, 2%); }
 }
 
 /* ---------- agent scan ---------- */

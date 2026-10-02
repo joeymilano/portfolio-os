@@ -33,12 +33,11 @@ export default function Hero({ onStart }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.22, ease: [0.2, 0.7, 0, 1] }}
-            className="display-hero text-white"
+            className="display-hero text-fg font-serif-display"
           >
-            <span className="block text-[clamp(52px,8.2vw,118px)]">设计留学</span>
-            <span className="block text-[clamp(52px,8.2vw,118px)]">
-              智能规划师
-              <span className="accent-text">.</span>
+            <span className="block text-[clamp(50px,7.8vw,112px)]">设计留学</span>
+            <span className="block text-[clamp(50px,7.8vw,112px)]">
+              智能规划师<span className="text-hot not-italic">.</span>
             </span>
           </motion.h1>
 
@@ -108,35 +107,50 @@ export default function Hero({ onStart }) {
           </motion.div>
         </div>
 
-        {/* ---------- 右侧：1DL door 式带框作品图 + 数据卡 ---------- */}
-        <div className="relative hidden lg:block h-[520px]">
-          {/* 主图：带框渲染（door-media.framed 风格） */}
+        {/* ---------- 右侧：双插画 + 数据卡（1DL door 式） ---------- */}
+        <div className="relative hidden lg:block h-[560px]">
+          {/* 主插画：火星建筑模块（带框渲染） */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.2, 0.7, 0, 1] }}
-            className="absolute right-4 top-0 w-[340px]"
+            transition={{ duration: 1, delay: 0.55, ease: [0.2, 0.7, 0, 1] }}
+            className="absolute right-2 top-0 w-[336px] group"
           >
             <div
-              className="rounded-xl p-5 border border-[rgba(237,237,232,0.12)]"
+              className="rounded-xl p-4 border border-[rgba(237,237,232,0.12)]"
               style={{
                 background: "radial-gradient(80% 70% at 70% 30%, #1a1c1b, #0b0b0a 70%)",
               }}
             >
               <img
-                src="./assets/work/vehicle-lighting.webp"
-                alt="学生作品 · 车载照明系统"
+                src="./assets/work/mars-modules.webp"
+                alt="学员作品 · 火星建筑模块系统"
                 className="w-full aspect-video object-cover rounded-md border border-[rgba(237,237,232,0.22)] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] work-img"
               />
-              <div className="flex items-center justify-between mt-4">
-                <span className="eyebrow">P1 · 候鸟计划</span>
-                <span className="font-mono text-[10px] text-fg3">26 PAGES</span>
+              <div className="flex items-center justify-between mt-3.5">
+                <span className="eyebrow"><b>学员作品</b> · Mars Modules</span>
+                <span className="font-mono text-[10px] text-fg3">RCA · OFFER</span>
               </div>
             </div>
           </motion.div>
 
+          {/* 副插画：天空之城（小带框卡） */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.85, ease: [0.2, 0.7, 0, 1] }}
+            className="absolute left-0 top-7 w-[218px] group"
+          >
+            <img
+              src="./assets/work/sky-city.webp"
+              alt="学员作品 · 天空之城"
+              className="w-full aspect-[4/5] object-cover rounded-lg border border-[rgba(237,237,232,0.16)] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.85)] work-img"
+            />
+            <div className="mt-2.5 eyebrow !text-[9.5px]">Sky City · UAL</div>
+          </motion.div>
+
           {/* 数据卡：Gap 摘要 */}
-          <FloatCard className="absolute left-0 top-64 w-60" delay={1.0} float="10s">
+          <FloatCard className="absolute left-0 top-[300px] w-60" delay={1.05} float="10s">
             <div className="eyebrow mb-3"><b>Gap Analysis</b></div>
             <div className="space-y-3">
               {[
@@ -155,7 +169,7 @@ export default function Hero({ onStart }) {
                       style={{ background: c }}
                       initial={{ width: 0 }}
                       animate={{ width: `${v}%` }}
-                      transition={{ duration: 1.2, delay: 1.3, ease: [0.2, 0.7, 0, 1] }}
+                      transition={{ duration: 1.2, delay: 1.4, ease: [0.2, 0.7, 0, 1] }}
                     />
                   </div>
                 </div>
@@ -166,9 +180,9 @@ export default function Hero({ onStart }) {
             </div>
           </FloatCard>
 
-          <FloatCard className="absolute right-0 bottom-0 w-72 doorline overflow-hidden" delay={1.2} float="9s">
+          <FloatCard className="absolute right-2 bottom-0 w-72 doorline overflow-hidden" delay={1.2} float="9s">
             <div className="eyebrow mb-2"><b>Countdown</b></div>
-            <div className="font-medium text-4xl accent-text tracking-tight tabular-nums">105</div>
+            <div className="font-medium text-4xl text-hot tracking-tight tabular-nums">105</div>
             <div className="font-mono text-[10px] text-fg3 mt-1 tracking-[0.08em]">
               DAYS TO SUBMIT WINDOW · 2027-01-15
             </div>

@@ -103,7 +103,7 @@ export default function Analysis({ onNext }) {
               )}
             </div>
             <div className="flex items-end gap-4">
-              <span className="font-display font-extrabold text-[64px] leading-none gold-text tracking-tight">
+              <span className="font-serif-display font-semibold text-[64px] leading-none text-hot tracking-tight">
                 {Math.round(score)}
               </span>
               <span className="font-mono text-[11px] text-white/40 pb-2.5">/ 100 · PORTFOLIO INDEX</span>

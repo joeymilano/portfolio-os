@@ -31,10 +31,10 @@ export function ScreenHead({ step, title, sub, right }) {
     >
       <div>
         <div className="eyebrow mb-3">{step}</div>
-        <h2 className="font-display text-3xl md:text-[40px] font-bold leading-tight tracking-tight text-white">
+        <h2 className="font-serif-display text-[30px] md:text-[38px] leading-[1.15] tracking-tight text-fg">
           {title}
         </h2>
-        {sub && <p className="mt-2 text-sm md:text-[15px] text-white/55 max-w-xl leading-relaxed">{sub}</p>}
+        {sub && <p className="mt-2.5 text-sm md:text-[15px] text-fg2 max-w-xl leading-relaxed">{sub}</p>}
       </div>
       {right}
     </motion.div>

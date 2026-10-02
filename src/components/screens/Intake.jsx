@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { Upload, Check, TriangleAlert, X, FileText } from "lucide-react"
 import { STUDENT, PORTFOLIO } from "../../data/agent"
 import { ScreenHead, AgentBar } from "../ui"
@@ -177,44 +177,25 @@ export default function Intake({ onNext }) {
                             <span className="text-[11px] text-fg3">{p.type}</span>
                           </div>
                         </div>
-                        <AnimatePresence mode="wait">
-                          {state === "done" ? (
-                            <motion.span
-                              key="done"
-                              initial={{ opacity: 0, scale: 0.7 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              className="tag tag-ice !text-[10px]"
-                            >
-                              {p.pages} 页 · 已解析
-                            </motion.span>
-                          ) : (
-                            <motion.span
-                              key="pending"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="font-mono text-[10px] text-academy cursor-blink"
-                            >
-                              解析中
-                            </motion.span>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                      <AnimatePresence>
-                        {state === "done" && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            className="overflow-hidden"
-                          >
-                            <div className="flex flex-wrap gap-1.5 pt-0.5">
-                              {p.detected.map((d) => (
-                                <DetectTag key={d} label={d} />
-                              ))}
-                            </div>
-                          </motion.div>
+                        {state === "done" ? (
+                          <span className="tag tag-ice !text-[10px] fade-up">
+                            {p.pages} 页 · 已解析
+                          </span>
+                        ) : (
+                          <span className="font-mono text-[10px] text-academy cursor-blink">
+                            解析中
+                          </span>
                         )}
-                      </AnimatePresence>
+                      </div>
+                      {state === "done" && (
+                        <div className="overflow-hidden fade-up">
+                          <div className="flex flex-wrap gap-1.5 pt-0.5">
+                            {p.detected.map((d) => (
+                              <DetectTag key={d} label={d} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </motion.div>
                   )
                 })}
@@ -222,28 +203,19 @@ export default function Intake({ onNext }) {
 
               {/* agent 状态 + CTA */}
               <div className="mt-5">
-                <AnimatePresence mode="wait">
-                  {stage === "parsing" ? (
-                    <motion.div key="bar" exit={{ opacity: 0 }}>
-                      <AgentBar text="正在逐页解析 74 页版面 · 识别项目结构与证据类型…" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="cta"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center justify-between gap-4"
-                    >
-                      <div className="font-mono text-[11px] text-white/45 leading-relaxed">
-                        检出 3 个完整项目<br />
-                        <span className="text-red-300/80">2 处研究过程缺失 · 0 个交互原型</span>
-                      </div>
-                      <button className="btn-gold !text-sm shrink-0" onClick={onNext} disabled={!allParsed}>
-                        开始 Gap Analysis →
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {stage === "parsing" ? (
+                  <AgentBar text="正在逐页解析 74 页版面 · 识别项目结构与证据类型…" />
+                ) : (
+                  <div className="flex items-center justify-between gap-4 fade-up">
+                    <div className="font-mono text-[11px] text-fg2 leading-relaxed">
+                      检出 3 个完整项目<br />
+                      <span className="text-red-300/80">2 处研究过程缺失 · 0 个交互原型</span>
+                    </div>
+                    <button className="btn-gold !text-sm shrink-0" onClick={onNext} disabled={!allParsed}>
+                      开始 Gap Analysis →
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}
