@@ -125,15 +125,15 @@ export default function Pay({ order, onNext }) {
                   transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.1 }}
                   className="w-20 h-20 rounded-full grid place-items-center mb-5"
                   style={{
-                    background: "radial-gradient(circle, rgba(226,193,121,0.18), rgba(226,193,121,0.04))",
-                    border: "1.5px solid rgba(226,193,121,0.5)",
-                    boxShadow: "0 0 50px -8px rgba(226,193,121,0.45)",
+                    background: "radial-gradient(circle, rgba(87,255,195,0.16), rgba(87,255,195,0.04))",
+                    border: "1.5px solid rgba(87,255,195,0.5)",
+                    boxShadow: "0 0 50px -8px rgba(87,255,195,0.4)",
                   }}
                 >
                   <motion.svg width="34" height="34" viewBox="0 0 24 24" fill="none">
                     <motion.path
                       d="M4.5 12.5l5 5 10-11"
-                      stroke="#e2c179" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
+                      stroke="#57ffc3" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"
                       initial={{ pathLength: 0 }}
                       animate={{ pathLength: 1 }}
                       transition={{ duration: 0.5, delay: 0.35 }}

@@ -111,7 +111,7 @@ export default function Booking({ onNext, onOrder }) {
 
           {/* 导师 */}
           <div className="flex items-center gap-3.5 rounded-xl bg-white/[0.03] border border-white/[0.07] p-3.5 mb-5">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-ice/25 to-ice/5 border border-ice/20 grid place-items-center font-display font-bold text-ice">
+            <div className="w-11 h-11 rounded-lg bg-studio/90 grid place-items-center font-medium text-ink">
               Y
             </div>
             <div className="flex-1">

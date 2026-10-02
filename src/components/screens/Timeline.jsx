@@ -64,7 +64,7 @@ export default function Timeline({ onNext }) {
       {/* 阶段时间轴 */}
       <div className="relative pl-2">
         {/* 主轴线 */}
-        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-gold/60 via-white/12 to-white/8" />
+        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-gold/60 via-[rgba(237,237,232,0.12)] to-[rgba(237,237,232,0.08)]" />
 
         {TIMELINE.phases.map((p, i) => {
           const isDeadline = p.status === "deadline"
@@ -81,7 +81,7 @@ export default function Timeline({ onNext }) {
               <span
                 className={`absolute left-0 top-1.5 grid place-items-center w-[15px] h-[15px] rounded-full border-2 ${
                   isDeadline
-                    ? "border-gold bg-gold/25 shadow-[0_0_14px_rgba(226,193,121,0.5)]"
+                    ? "border-gold bg-gold/25 shadow-[0_0_14px_rgba(255,74,46,0.5)]"
                     : isActive
                       ? "border-ice bg-ice/25 shadow-[0_0_12px_rgba(147,233,208,0.4)]"
                       : "border-white/25 bg-ink"

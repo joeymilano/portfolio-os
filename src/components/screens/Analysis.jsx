@@ -107,9 +107,9 @@ export default function Analysis({ onNext }) {
           {/* 摘要行 */}
           <div className="grid grid-cols-3 gap-4">
             {[
-              ["关键差距", "2 项", "#ff8a80"],
-              ["可提升", "1 项", "#e2c179"],
-              ["优势", "1 项", "#93e9d0"],
+              ["关键差距", "2 项", "#ff4a2e"],
+              ["可提升", "1 项", "#edede8"],
+              ["优势", "1 项", "#57ffc3"],
             ].map(([l, v, c], i) => (
               <motion.div
                 key={l}

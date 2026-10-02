@@ -3,9 +3,9 @@ import { SCHOOLS } from "../../data/agent"
 import { ScreenHead, MatchRing } from "../ui"
 
 const TIER_STYLE = {
-  冲刺: { tag: "tag-red", ring: "#ff8a80" },
-  匹配: { tag: "tag-gold", ring: "#e2c179" },
-  稳妥: { tag: "tag-ice", ring: "#93e9d0" },
+  冲刺: { tag: "tag-red", ring: "#ff4a2e" },
+  匹配: { tag: "tag-gold", ring: "#edede8" },
+  稳妥: { tag: "tag-ice", ring: "#57ffc3" },
 }
 
 export default function Match({ onNext }) {

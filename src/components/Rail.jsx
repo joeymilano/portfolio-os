@@ -50,7 +50,7 @@ export default function Rail({ current, visited, onJump }) {
               {active && (
                 <motion.span
                   layoutId="rail-dot"
-                  className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_12px_rgba(226,193,121,0.8)]"
+                  className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_12px_rgba(255,74,46,0.8)]"
                 />
               )}
             </button>

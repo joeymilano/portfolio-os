@@ -2,200 +2,175 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
-<title>PORTFOLIO OS Cover</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<title>PORTFOLIO OS Cover · 1DL</title>
 <style>
+  @font-face {
+    font-family: "Geist";
+    src: url("../../DesignLabWebsite/assets/fonts/Geist-Variable.woff2") format("woff2");
+    font-weight: 100 900; font-display: swap;
+  }
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("../../DesignLabWebsite/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+    font-weight: 100 900; font-display: swap;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     width: 1600px; height: 900px; overflow: hidden;
-    background: #07070b; color: #eceaf2;
-    font-family: "Instrument Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0B0B0A; color: #EDEDE8;
+    font-family: "Geist", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-feature-settings: "ss01","cv11";
     position: relative;
   }
-  .mono { font-family: "JetBrains Mono", monospace; }
-  .display { font-family: "Syne", "PingFang SC", sans-serif; }
+  .mono { font-family: "Geist Mono", "SF Mono", monospace; }
 
-  /* atmosphere */
-  .blob { position: absolute; border-radius: 50%; filter: blur(120px); }
-  .b1 { width: 700px; height: 700px; left: -180px; top: -220px;
-    background: radial-gradient(circle, rgba(226,193,121,0.17), rgba(226,193,121,0.05) 45%, transparent 70%); }
-  .b2 { width: 620px; height: 620px; right: -140px; bottom: -180px;
-    background: radial-gradient(circle, rgba(147,233,208,0.11), rgba(147,233,208,0.03) 50%, transparent 72%); }
-  .b3 { width: 460px; height: 460px; left: 44%; top: 32%;
-    background: radial-gradient(circle, rgba(122,90,255,0.08), transparent 68%); }
-  .grid { position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 95% 85% at 45% 40%, black 25%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 45% 40%, black 25%, transparent 75%); }
-  .vignette { position: absolute; inset: 0;
-    background: radial-gradient(ellipse 130% 100% at 50% 0%, transparent 50%, rgba(7,7,11,0.9) 100%); }
+  /* 极淡双色角光 */
+  .glow { position: absolute; border-radius: 50%; filter: blur(150px); }
+  .g1 { width: 760px; height: 760px; left: -220px; top: -260px;
+    background: radial-gradient(circle, rgba(255,74,46,0.09), transparent 68%); }
+  .g2 { width: 660px; height: 660px; right: -160px; bottom: -200px;
+    background: radial-gradient(circle, rgba(87,255,195,0.06), transparent 70%); }
 
-  .wrap { position: relative; z-index: 5; width: 100%; height: 100%; padding: 64px 84px; display: flex; }
-  .left { flex: 1.15; display: flex; flex-direction: column; justify-content: center; }
+  .frame { position: absolute; inset: 0; z-index: 5; padding: 56px 72px; display: flex; flex-direction: column; }
 
-  .badges { display: flex; gap: 12px; margin-bottom: 34px; }
-  .tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px;
-    font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.05em;
-    border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); color: rgba(236,234,242,0.78); }
-  .tag.gold { border-color: rgba(226,193,121,0.45); background: rgba(226,193,121,0.08); color: #e9d5a4; }
+  /* 顶部 meta 行 */
+  .meta { display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    padding-bottom: 18px; border-bottom: 1px solid rgba(237,237,232,0.12); }
+  .meta .l { display: flex; gap: 26px; }
+  .meta span { font-family: "Geist Mono", monospace; font-size: 13px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #9A9A93; }
+  .meta span b { color: #EDEDE8; font-weight: 400; }
+  .meta .a { color: #FF4A2E; }
 
-  h1 { font-family: "Syne", "PingFang SC", sans-serif; font-weight: 800; font-size: 128px;
-    line-height: 0.95; letter-spacing: -0.02em;
-    background: linear-gradient(102deg, #f6e8c3 0%, #e2c179 42%, #a8873f 78%, #e2c179 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .cn { font-size: 44px; font-weight: 700; color: rgba(255,255,255,0.94); margin-top: 18px; letter-spacing: 0.01em; }
-  .tagline { font-size: 22px; color: rgba(255,255,255,0.55); margin-top: 20px; line-height: 1.6; }
-  .tagline b { color: rgba(255,255,255,0.85); font-weight: 600; }
+  .body { flex: 1; display: grid; grid-template-columns: 1.18fr 0.82fr; gap: 56px; padding-top: 52px; }
 
-  .pipeline { display: flex; align-items: center; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
-  .chip { padding: 9px 16px; border-radius: 999px; font-size: 15px;
-    border: 1px solid rgba(147,233,208,0.32); background: rgba(147,233,208,0.07); color: #a9f0dd;
-    font-family: "PingFang SC", sans-serif; }
-  .arrow { color: rgba(226,193,121,0.55); font-size: 15px; }
+  /* 左侧 */
+  .kicker { font-family: "Geist Mono", monospace; font-size: 14px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #9A9A93; margin-bottom: 26px; }
+  .kicker b { color: #EDEDE8; font-weight: 400; }
+  h1 { font-weight: 500; font-size: 132px; line-height: 1.04; letter-spacing: -0.035em; color: #EDEDE8; }
+  h1 .dot { color: #FF4A2E; }
+  .en { font-family: "Geist Mono", monospace; font-size: 15px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #9A9A93; margin-top: 22px; }
+  .en i { font-style: normal; color: #83827B; }
+  .lead { font-size: 21px; line-height: 1.55; color: #9A9A93; margin-top: 20px; max-width: 30em; }
+  .lead strong { color: #EDEDE8; font-weight: 500; }
 
-  .stats { display: flex; gap: 52px; margin-top: 46px; }
-  .stat { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; }
-  .stat .v { font-family: "Syne", sans-serif; font-weight: 700; font-size: 30px; color: rgba(255,255,255,0.92); }
-  .stat .l { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.2em; color: rgba(255,255,255,0.38); margin-top: 6px; }
+  .pipeline { display: flex; align-items: center; gap: 9px; margin-top: 30px; flex-wrap: wrap; }
+  .chip { padding: 8px 14px; border-radius: 999px; font-family: "Geist Mono", monospace; font-size: 13px;
+    letter-spacing: 0.04em; border: 1px solid rgba(255,74,46,0.45); background: rgba(255,74,46,0.08); color: #ff7a63; }
+  .arr { color: #83827B; font-size: 13px; }
 
-  /* right floating cards */
-  .right { flex: 0.85; position: relative; }
-  .card { position: absolute; background: linear-gradient(165deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; backdrop-filter: blur(18px);
-    box-shadow: 0 30px 80px -40px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.07); }
+  .stats { display: flex; gap: 56px; margin-top: 40px; }
+  .stat { border-top: 1px solid rgba(237,237,232,0.12); padding-top: 13px; min-width: 96px; }
+  .stat .v { font-weight: 500; font-size: 32px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .stat .v em { font-style: normal; color: #FF4A2E; }
+  .stat .l { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: #83827B; margin-top: 6px; }
 
-  .c-radar { right: 30px; top: 0; width: 380px; padding: 26px 18px; }
-  .c-radar svg { display: block; margin: 0 auto; }
-  .c-radar .eyebrow, .c-match .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px;
-    letter-spacing: 0.3em; color: rgba(226,193,121,0.75); margin-bottom: 14px; }
+  /* 右侧 */
+  .right { position: relative; }
+  .shot { position: absolute; right: 0; top: 6px; width: 388px;
+    border: 1px solid rgba(237,237,232,0.12); border-radius: 16px; padding: 18px;
+    background: radial-gradient(80% 70% at 70% 30%, #1a1c1b, #0B0B0A 70%); }
+  .shot img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px;
+    border: 1px solid rgba(237,237,232,0.22); box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8); display: block; }
+  .shot .cap { display: flex; justify-content: space-between; margin-top: 14px;
+    font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.06em; color: #9A9A93; text-transform: uppercase; }
+  .shot .cap b { color: #EDEDE8; font-weight: 400; }
 
-  .c-match { left: 0; top: 350px; width: 330px; padding: 24px 26px; }
-  .c-count { right: 40px; bottom: 10px; width: 350px; padding: 24px 28px; border-color: rgba(226,193,121,0.35); }
+  .card { position: absolute; border: 1px solid rgba(237,237,232,0.12); border-radius: 14px;
+    background: #141413; }
+  .c-gap { left: 0; top: 308px; width: 300px; padding: 20px 22px; }
+  .c-cd { right: 26px; bottom: 8px; width: 330px; padding: 20px 22px; border-bottom: 2px solid #FF4A2E; }
+  .c-gap .t, .c-cd .t { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #9A9A93; margin-bottom: 14px; }
+  .c-gap .t b { color: #EDEDE8; font-weight: 400; }
+  .row { display: flex; justify-content: space-between; font-size: 13px; color: #9A9A93; margin-bottom: 6px; }
+  .row span:last-child { font-family: "Geist Mono", monospace; color: #EDEDE8; }
+  .bar { height: 5px; border-radius: 99px; background: rgba(237,237,232,0.08); overflow: hidden; margin-bottom: 12px; }
+  .bar i { display: block; height: 100%; border-radius: 99px; }
 
-  .row { display: flex; align-items: center; gap: 20px; }
-  .prog { margin-top: 14px; }
-  .prog .bar { height: 7px; border-radius: 99px; background: rgba(255,255,255,0.08); overflow: hidden; }
-  .prog .fill { height: 100%; border-radius: 99px; }
-  .prog .lbl { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .c-cd { right: 26px; bottom: 8px; width: 330px; padding: 20px 22px; border-bottom: 2px solid #FF4A2E; }
+  .days { font-weight: 500; font-size: 58px; letter-spacing: -0.04em; line-height: 1; color: #FF4A2E; font-variant-numeric: tabular-nums; }
+  .dsub { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: #83827B; margin-top: 9px; text-transform: uppercase; }
+  .dchips { display: flex; gap: 7px; margin-top: 13px; flex-wrap: wrap; }
+  .dchips span { font-family: "Geist Mono", monospace; font-size: 11px; padding: 5px 10px; border-radius: 99px;
+    border: 1px solid rgba(237,237,232,0.2); color: #9A9A93; }
+  .dchips span.a { border-color: rgba(255,74,46,0.5); background: rgba(255,74,46,0.08); color: #ff7a63; }
 
-  .matchnum { font-family: "Syne", sans-serif; font-weight: 800; font-size: 52px;
-    background: linear-gradient(102deg, #f6e8c3, #e2c179 55%, #b3914c);
-    -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .school { font-size: 17px; color: rgba(255,255,255,0.9); font-weight: 600; }
-  .prog2 { font-family: "JetBrains Mono", monospace; font-size: 13px; color: rgba(226,193,121,0.85); margin-top: 4px; }
+  /* 底部 meta 行 */
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    padding-top: 18px; border-top: 1px solid rgba(237,237,232,0.12); }
+  .foot span { font-family: "Geist Mono", monospace; font-size: 12.5px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #83827B; }
+  .foot b { color: #EDEDE8; font-weight: 400; }
+  .foot .url b { color: #FF7A63; }
 
-  .days { font-family: "Syne", sans-serif; font-weight: 800; font-size: 74px; line-height: 1;
-    background: linear-gradient(102deg, #f6e8c3, #e2c179 55%, #b3914c);
-    -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .dsub { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.18em; color: rgba(255,255,255,0.4); margin-top: 8px; }
-  .dchips { display: flex; gap: 8px; margin-top: 14px; }
-  .dchips span { font-size: 12px; padding: 5px 11px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.65); }
-  .dchips span.g { border-color: rgba(226,193,121,0.4); background: rgba(226,193,121,0.08); color: #e9d5a4; }
-
-  .url { position: absolute; right: 84px; bottom: 40px; z-index: 6;
-    font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
-  .url b { color: rgba(226,193,121,0.85); font-weight: 500; }
-
-  /* 扫描线装饰 */
-  .scan { position: absolute; left: 0; right: 0; height: 160px; z-index: 4; pointer-events: none;
-    background: linear-gradient(180deg, transparent, rgba(226,193,121,0.10) 45%, rgba(244,227,178,0.22) 50%, rgba(226,193,121,0.10) 55%, transparent);
-    animation: scan 5s cubic-bezier(0.45,0,0.55,1) infinite; }
-  @keyframes scan { 0% { top: -18%; } 100% { top: 108%; } }
+  .grain { position: absolute; inset: -50%; z-index: 9; pointer-events: none; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 </style>
 </head>
 <body>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  <div class="grid"></div><div class="scan"></div><div class="vignette"></div>
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="grain"></div>
 
-  <div class="wrap">
-    <div class="left">
-      <div class="badges">
-        <span class="tag gold">支付宝 · 智能体涌现奖 参赛作品</span>
-        <span class="tag">消费新体验赛道</span>
-        <span class="tag">1% DESIGN LAB 出品</span>
+  <div class="frame">
+    <div class="meta">
+      <div class="l">
+        <span><i class="a">●</i>&nbsp; ACADEMY LINE · 作品集学院</span>
+        <span>ALIPAY AGENT AWARD <b>消费新体验</b></span>
       </div>
-      <h1>PORTFOLIO OS</h1>
-      <div class="cn">设计留学智能规划师</div>
-      <div class="tagline">把「<b>我能申请哪里 → 作品集缺什么 → 接下来做什么 → 专业服务 → 预约支付</b>」<br/>这一整件事，交给一个智能体办完。</div>
-      <div class="stats">
-        <div class="stat"><div class="v">5 维</div><div class="l">GAP 评估模型</div></div>
-        <div class="stat"><div class="v">6 所</div><div class="l">冲稳妥院校匹配</div></div>
-        <div class="stat"><div class="v">105 天</div><div class="l">申请作战计划</div></div>
-        <div class="stat"><div class="v">1 站式</div><div class="l">诊断到支付闭环</div></div>
+      <span>SHANGHAI · 31.23N 121.47E · 2026</span>
+    </div>
+
+    <div class="body">
+      <div class="left">
+        <div class="kicker">1% DESIGN LAB 出品 · <b>AI-NATIVE PLANNING AGENT</b></div>
+        <h1>设计留学<br/>智能规划师<span class="dot">.</span></h1>
+        <div class="en">PORTFOLIO OS <i>— AI-NATIVE DESIGN EDUCATION PLANNING AGENT</i></div>
+        <div class="lead">把「<strong>我能申请哪里 → 作品集缺什么 → 接下来做什么 → 专业服务 → 预约支付</strong>」这一整件事，交给一个智能体办完。</div>
+        <div class="pipeline">
+          <span class="chip">Gap Analysis</span><span class="arr">→</span>
+          <span class="chip">院校匹配</span><span class="arr">→</span>
+          <span class="chip">补强方案</span><span class="arr">→</span>
+          <span class="chip">时间线</span><span class="arr">→</span>
+          <span class="chip">预约 · 支付</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="v">6<em>+</em></div><div class="l">院校库</div></div>
+          <div class="stat"><div class="v">5 维</div><div class="l">评估模型</div></div>
+          <div class="stat"><div class="v">105 天</div><div class="l">作战计划</div></div>
+          <div class="stat"><div class="v">1 站式</div><div class="l">闭环</div></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="shot">
+          <img src="../../DesignLabWebsite/assets/work/vehicle-lighting.webp" alt="学生作品" />
+          <div class="cap"><span>P1 · <b>候鸟计划</b></span><span>26 PAGES</span></div>
+        </div>
+        <div class="card c-gap">
+          <div class="t"><b>GAP ANALYSIS</b> · INDEX 61 B−</div>
+          <div class="row"><span>视觉表达</span><span>88</span></div>
+          <div class="bar"><i style="width:88%;background:#57FFC3;"></i></div>
+          <div class="row"><span>研究深度</span><span>52</span></div>
+          <div class="bar"><i style="width:52%;background:#FF4A2E;"></i></div>
+          <div class="row"><span>交互与服务</span><span>46</span></div>
+          <div class="bar"><i style="width:46%;background:#FF4A2E;"></i></div>
+        </div>
+        <div class="card c-cd">
+          <div class="t">COUNTDOWN</div>
+          <div class="days">105</div>
+          <div class="dsub">DAYS TO SUBMIT WINDOW · 2027-01-15</div>
+          <div class="dchips"><span class="a">P2 重构</span><span>新项目</span><span>动效</span><span>递交</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="right">
-      <div class="card c-radar">
-        <div class="eyebrow">PORTFOLIO GAP ANALYSIS</div>
-        <svg width="344" height="240" viewBox="0 0 344 240">
-          <g transform="translate(100,120)">
-            <polygon points="0,-80 76,-25 47,65 -47,65 -76,-25" fill="none" stroke="rgba(255,255,255,0.09)"/>
-            <polygon points="0,-60 57,-18.7 35.2,48.7 -35.2,48.7 -57,-18.7" fill="none" stroke="rgba(255,255,255,0.07)"/>
-            <polygon points="0,-40 38,-12.5 23.5,32.5 -23.5,32.5 -38,-12.5" fill="none" stroke="rgba(255,255,255,0.06)"/>
-            <line x1="0" y1="0" x2="0" y2="-80" stroke="rgba(255,255,255,0.07)"/>
-            <line x1="0" y1="0" x2="76" y2="-25" stroke="rgba(255,255,255,0.07)"/>
-            <line x1="0" y1="0" x2="47" y2="65" stroke="rgba(255,255,255,0.07)"/>
-            <line x1="0" y1="0" x2="-47" y2="65" stroke="rgba(255,255,255,0.07)"/>
-            <line x1="0" y1="0" x2="-76" y2="-25" stroke="rgba(255,255,255,0.07)"/>
-            <polygon points="0,-70.7 30.7,-10.2 18.5,26.1 -30.6,43.7 -42.7,-13.9" fill="rgba(226,193,121,0.05)" stroke="rgba(226,193,121,0.55)" stroke-width="1.5" stroke-dasharray="7 5"/>
-            <polygon points="0,-70.7 66,-21.8 20.4,27.9 -26,35.3 -46.5,-15.8" fill="rgba(147,233,208,0.14)" stroke="rgba(147,233,208,0.9)" stroke-width="2"/>
-            <circle cx="0" cy="-70.7" r="4" fill="#93e9d0"/><circle cx="66" cy="-21.8" r="4" fill="#93e9d0"/>
-            <circle cx="20.4" cy="27.9" r="4" fill="#93e9d0"/><circle cx="-26" cy="35.3" r="4" fill="#93e9d0"/>
-            <circle cx="-46.5" cy="-15.8" r="4" fill="#93e9d0"/>
-            <text x="0" y="-95" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="12" font-family="JetBrains Mono">视觉表达</text>
-            <text x="94" y="-30" text-anchor="start" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">研究深度</text>
-            <text x="56" y="86" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">交互与服务</text>
-            <text x="-56" y="86" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">叙事完整性</text>
-            <text x="-94" y="-30" text-anchor="end" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">技术广度</text>
-          </g>
-          <g transform="translate(250,42)">
-            <rect x="0" y="0" width="10" height="10" rx="2" fill="rgba(147,233,208,0.7)"/>
-            <text x="18" y="9" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">当前 61</text>
-            <line x1="0" y1="28" x2="14" y2="28" stroke="rgba(226,193,121,0.8)" stroke-width="2" stroke-dasharray="4 3"/>
-            <text x="18" y="32" fill="rgba(255,255,255,0.55)" font-size="12" font-family="PingFang SC">目标线</text>
-            <text x="0" y="64" fill="#ff8a80" font-size="12" font-family="JetBrains Mono">F1 交互缺位</text>
-            <text x="0" y="84" fill="#e2c179" font-size="12" font-family="JetBrains Mono">F2 结构缺口</text>
-            <text x="0" y="104" fill="#93e9d0" font-size="12" font-family="JetBrains Mono">F4 视觉前10%</text>
-            <text x="0" y="140" fill="rgba(255,255,255,0.35)" font-size="11" font-family="JetBrains Mono">UPPER 10% VISUAL</text>
-            <text x="0" y="158" fill="rgba(255,255,255,0.35)" font-size="11" font-family="JetBrains Mono">vs UAL/RCA LINE</text>
-          </g>
-        </svg>
-      </div>
-
-      <div class="card c-match">
-        <div class="eyebrow">MATCH · 主推荐</div>
-        <div class="row">
-          <div>
-            <div class="school">UAL · London College of Communication</div>
-            <div class="prog2">MA Interaction Design · 匹配档</div>
-          </div>
-        </div>
-        <div class="prog">
-          <div class="lbl"><span>匹配度</span><span class="mono">85 → 91</span></div>
-          <div class="bar"><div class="fill" style="width:85%; background: linear-gradient(90deg,#d9b26a,#e2c179);"></div></div>
-        </div>
-      </div>
-
-      <div class="card c-count">
-        <div class="eyebrow" style="margin-bottom:8px">COUNTDOWN</div>
-        <div class="row" style="align-items:flex-end; gap:14px;">
-          <div class="days">105</div>
-          <div class="dsub" style="margin-top:0; padding-bottom:10px">DAYS TO<br/>SUBMIT WINDOW</div>
-          <div style="flex:1"></div>
-          <div class="matchnum" style="font-size:40px">¥12,800</div>
-        </div>
-        <div class="dchips">
-          <span class="g">P2 重构</span><span>新交互项目</span><span>动效物料</span><span>支付宝支付</span>
-        </div>
-      </div>
+    <div class="foot">
+      <span>1% DESIGN LAB · 梦想管理局</span>
+      <span class="url">DEMO → <b>joeymilano.github.io/portfolio-os</b></span>
     </div>
   </div>
-
-  <div class="url">DEMO → <b>joeymilano.github.io/portfolio-os</b></div>
 </body>
 </html>

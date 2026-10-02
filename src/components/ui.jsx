@@ -101,28 +101,28 @@ export function Radar({ axes, score, target, max = 100, size = 300 }) {
         )
       })}
 
-      {/* 目标参考线（金色虚线） */}
+      {/* 目标参考线（academy vermilion 虚线） */}
       <motion.polygon
         points={poly(target)}
-        fill="rgba(226,193,121,0.05)"
-        stroke="rgba(226,193,121,0.55)"
+        fill="rgba(255,74,46,0.04)"
+        stroke="rgba(255,74,46,0.6)"
         strokeWidth="1.5"
         strokeDasharray="6 5"
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1, delay: 0.5, ease: [0.2, 0.7, 0, 1] }}
         style={{ transformOrigin: `${cx}px ${cy}px` }}
       />
 
-      {/* 当前得分（冰青实面） */}
+      {/* 当前得分（studio mint 实面） */}
       <motion.polygon
         points={poly(score)}
-        fill="rgba(147,233,208,0.14)"
-        stroke="rgba(147,233,208,0.9)"
+        fill="rgba(87,255,195,0.12)"
+        stroke="rgba(87,255,195,0.9)"
         strokeWidth="2"
         initial={{ opacity: 0, scale: 0.4 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.1, delay: 0.2, ease: [0.2, 0.7, 0, 1] }}
         style={{ transformOrigin: `${cx}px ${cy}px` }}
       />
       {score.map((v, i) => {
@@ -133,7 +133,7 @@ export function Radar({ axes, score, target, max = 100, size = 300 }) {
             cx={x}
             cy={y}
             r="3.5"
-            fill="#93e9d0"
+            fill="#57ffc3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 + i * 0.1 }}
@@ -145,7 +145,7 @@ export function Radar({ axes, score, target, max = 100, size = 300 }) {
 }
 
 // ---------- 匹配度圆环 ----------
-export function MatchRing({ value, size = 64, color = "#93e9d0", delay = 0 }) {
+export function MatchRing({ value, size = 64, color = "#57ffc3", delay = 0 }) {
   const r = size / 2 - 5
   const c = 2 * Math.PI * r
   const shown = useCountUp(value, { duration: 1400 })
@@ -184,10 +184,10 @@ export function ScoreBar({ label, value, target, delay = 0 }) {
           <span className="text-white/35"> / {target}</span>
         </span>
       </div>
-      <div className="h-[6px] rounded-full bg-white/[0.06] overflow-hidden relative">
+      <div className="h-[6px] rounded-full bg-[rgba(237,237,232,0.07)] overflow-hidden relative">
         {/* target mark */}
         <div
-          className="absolute top-[-3px] bottom-[-3px] w-[2px] bg-gold/80 rounded"
+          className="absolute top-[-3px] bottom-[-3px] w-[2px] bg-academy/80 rounded"
           style={{ left: `${target}%` }}
         />
         <motion.div
@@ -195,10 +195,10 @@ export function ScoreBar({ label, value, target, delay = 0 }) {
           style={{
             background:
               value + 8 >= target
-                ? "linear-gradient(90deg,#4fbfa3,#93e9d0)"
+                ? "linear-gradient(90deg,#3fd9a4,#57ffc3)"
                 : value + 18 >= target
-                  ? "linear-gradient(90deg,#d9b26a,#e2c179)"
-                  : "linear-gradient(90deg,#c96a5a,#ff8a80)",
+                  ? "linear-gradient(90deg,#c9c8c0,#edede8)"
+                  : "linear-gradient(90deg,#d63a20,#ff4a2e)",
           }}
           initial={{ width: 0 }}
           animate={{ width: `${value}%` }}

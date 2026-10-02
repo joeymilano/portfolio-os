@@ -41,7 +41,7 @@ export default function Intake({ onNext }) {
           </div>
 
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/5 border border-gold/25 grid place-items-center font-display font-bold text-xl text-gold">
+            <div className="w-14 h-14 rounded-xl bg-academy grid place-items-center font-medium text-xl text-ink">
               林
             </div>
             <div>
@@ -148,11 +148,18 @@ export default function Intake({ onNext }) {
                           : "border-white/[0.05] bg-transparent opacity-45"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span className="font-mono text-[10px] text-white/35">P{i + 1}</span>
-                          <span className="text-[13px] text-white/85 truncate">《{p.name}》</span>
-                          <span className="text-[11px] text-white/40">{p.type}</span>
+                      <div className="flex items-center gap-3 mb-2">
+                        <img
+                          src={p.img}
+                          alt={`作品集项目《${p.name}》`}
+                          className="w-16 h-11 object-cover rounded-md border border-[rgba(237,237,232,0.14)] work-img"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2.5">
+                            <span className="font-mono text-[10px] text-fg3">P{i + 1}</span>
+                            <span className="text-[13px] text-fg truncate">《{p.name}》</span>
+                            <span className="text-[11px] text-fg3">{p.type}</span>
+                          </div>
                         </div>
                         <AnimatePresence mode="wait">
                           {state === "done" ? (
@@ -170,7 +177,7 @@ export default function Intake({ onNext }) {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              className="font-mono text-[10px] text-gold/70 cursor-blink"
+                              className="font-mono text-[10px] text-academy cursor-blink"
                             >
                               解析中
                             </motion.span>
