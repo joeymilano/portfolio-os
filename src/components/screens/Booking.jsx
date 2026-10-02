@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react"
 import { motion } from "motion/react"
+import { Zap } from "lucide-react"
 import { SERVICES, MENTOR, fmtPrice } from "../../data/agent"
 import { ScreenHead } from "../ui"
 
@@ -72,8 +73,9 @@ export default function Booking({ onNext, onOrder }) {
                         animate={{ opacity: 1, height: "auto" }}
                         className="overflow-hidden"
                       >
-                        <div className="ml-6.5 mt-3 rounded-lg border border-ice/20 bg-ice/[0.05] px-3 py-2 text-[11.5px] text-ice/85">
-                          ⚡ {s.matchNote}
+                        <div className="ml-6.5 mt-3 rounded-lg border border-studio/20 bg-studio/[0.05] px-3 py-2 text-[11.5px] text-studio/85 flex items-start gap-1.5">
+                          <Zap size={11} strokeWidth={2} className="mt-0.5 shrink-0" />
+                          <span>{s.matchNote}</span>
                         </div>
                       </motion.div>
                     )}

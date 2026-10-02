@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
+import { ShieldCheck, Wallet, CreditCard } from "lucide-react"
 import { fmtPrice, orderNo } from "../../data/agent"
 import { ScreenHead } from "../ui"
 
@@ -74,8 +75,8 @@ export default function Pay({ order, onNext }) {
                 <div className="mb-7">
                   <div className="font-mono text-[10px] text-white/40 tracking-wider mb-2.5">支付方式</div>
                   {[
-                    { id: "yuebao", name: "余额宝", desc: "可用额度充足 · 推荐", badge: "推荐" },
-                    { id: "bank", name: "招商银行 (6688)", desc: "储蓄卡 · 单笔限额 50,000" },
+                    { id: "yuebao", name: "余额宝", desc: "可用额度充足 · 推荐", badge: "推荐", Icon: Wallet },
+                    { id: "bank", name: "招商银行 (6688)", desc: "储蓄卡 · 单笔限额 50,000", Icon: CreditCard },
                   ].map((m) => (
                     <button
                       key={m.id}
@@ -87,6 +88,7 @@ export default function Pay({ order, onNext }) {
                       <span className={`w-4 h-4 rounded-full border-2 grid place-items-center ${method === m.id ? "border-[#4d9bff]" : "border-white/25"}`}>
                         {method === m.id && <span className="w-2 h-2 rounded-full bg-[#4d9bff]" />}
                       </span>
+                      <m.Icon size={16} strokeWidth={1.7} className="text-white/70 shrink-0" />
                       <span className="text-[13.5px] text-white/85">{m.name}</span>
                       {m.badge && <span className="tag tag-blue !text-[9px] !py-0.5">{m.badge}</span>}
                       <span className="ml-auto text-[11px] text-white/35">{m.desc}</span>
@@ -166,7 +168,9 @@ export default function Pay({ order, onNext }) {
         transition={{ delay: 0.5 }}
         className="flex items-center justify-center gap-5 mt-5 font-mono text-[9.5px] text-white/25"
       >
-        <span>🔒 支付宝安全控件</span>
+        <span className="flex items-center gap-1.5">
+          <ShieldCheck size={11} strokeWidth={1.8} /> 支付宝安全控件
+        </span>
         <span>PCI-DSS</span>
         <span>本页面为大赛演示 · 收银台为高保真模拟</span>
       </motion.div>

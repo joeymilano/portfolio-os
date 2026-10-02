@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Star, Clock, MapPin } from "lucide-react"
 import { SCHOOLS } from "../../data/agent"
 import { ScreenHead, MatchRing } from "../ui"
 
@@ -47,16 +48,18 @@ export default function Match({ onNext }) {
                     className={`glass glass-hover p-6 relative ${s.primary ? "ring-gold" : ""}`}
                   >
                     {s.primary && (
-                      <span className="absolute -top-2.5 left-6 tag tag-gold !text-[10px] !py-1 shadow-lg shadow-black/40">
-                        ★ 主推荐 · 性价比最高
+                      <span className="absolute -top-2.5 left-6 tag tag-gold !text-[10px] !py-1 gap-1.5 shadow-lg shadow-black/40">
+                        <Star size={9} strokeWidth={2.2} className="fill-current" /> 主推荐 · 性价比最高
                       </span>
                     )}
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
                         <div className="font-display font-bold text-[17px] text-white leading-snug">{s.name}</div>
                         <div className="text-[12px] text-white/45 mt-0.5">{s.nameCN}</div>
-                        <div className="mt-2.5 text-[13.5px] text-gold/90 font-medium">{s.program}</div>
-                        <div className="font-mono text-[10.5px] text-white/35 mt-1">{s.location}</div>
+                        <div className="mt-2.5 text-[13.5px] text-academy font-medium">{s.program}</div>
+                        <div className="flex items-center gap-1.5 font-mono text-[10.5px] text-fg3 mt-1">
+                          <MapPin size={10} strokeWidth={1.8} /> {s.location}
+                        </div>
                       </div>
                       <div className="flex flex-col items-center gap-1 shrink-0">
                         <MatchRing value={s.match} color={st.ring} delay={0.4 + idx * 0.14} />
@@ -78,8 +81,10 @@ export default function Match({ onNext }) {
                     </div>
 
                     <div className="hairline mt-4 pt-3 flex items-center justify-between">
-                      <span className="font-mono text-[10px] text-white/40">⏱ {s.deadline}</span>
-                      <span className="font-mono text-[10px] text-white/25">{s.tierEN}</span>
+                      <span className="flex items-center gap-1.5 font-mono text-[10px] text-fg2">
+                        <Clock size={10} strokeWidth={1.8} /> {s.deadline}
+                      </span>
+                      <span className="font-mono text-[10px] text-fg3">{s.tierEN}</span>
                     </div>
                   </motion.div>
                 )

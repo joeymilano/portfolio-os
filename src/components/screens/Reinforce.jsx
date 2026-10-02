@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Check, Clock } from "lucide-react"
 import { REINFORCE } from "../../data/agent"
 import { ScreenHead } from "../ui"
 
@@ -54,7 +55,9 @@ export default function Reinforce({ onNext }) {
               <span className={`tag !text-[10.5px] ${r.priority.startsWith("P0") ? "tag-red" : "tag-gold"}`}>
                 {r.priority}
               </span>
-              <span className="font-mono text-[10.5px] text-white/45">⏱ {r.weeks}</span>
+              <span className="font-mono text-[10.5px] text-fg2 flex items-center gap-1.5">
+                <Clock size={10} strokeWidth={1.8} /> {r.weeks}
+              </span>
             </div>
 
             <h3 className="text-[15.5px] font-semibold text-white/92 leading-snug mb-4 min-h-[3em]">{r.title}</h3>
@@ -68,8 +71,8 @@ export default function Reinforce({ onNext }) {
                   transition={{ delay: 0.5 + i * 0.18 + j * 0.14 }}
                   className="flex items-start gap-2.5"
                 >
-                  <span className="mt-[3px] w-4 h-4 rounded-[5px] border border-ice/35 bg-ice/[0.08] grid place-items-center text-[9px] text-ice shrink-0">
-                    ✓
+                  <span className={`mt-[3px] w-4 h-4 rounded-[5px] border border-studio/35 bg-studio/[0.08] grid place-items-center shrink-0 ${r.primary ? "" : ""}`}>
+                    <Check size={9} strokeWidth={2.6} className="text-studio" />
                   </span>
                   <span className="text-[12.5px] leading-[1.65] text-white/62">{item}</span>
                 </motion.div>

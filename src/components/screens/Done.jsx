@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Check, RotateCcw, Code2 } from "lucide-react"
 import { BRAND } from "../../data/agent"
 import { STEPS } from "../Rail"
 
@@ -43,7 +44,9 @@ export default function Done({ onRestart, repoUrl }) {
         <div className="flex flex-wrap items-center gap-2">
           {STEPS.map((s, i) => (
             <span key={s.id} className="flex items-center gap-2">
-              <span className="tag tag-ice !text-[11px]">✓ {s.label}</span>
+              <span className="tag tag-ice !text-[11px] gap-1.5">
+                <Check size={9} strokeWidth={2.6} /> {s.label}
+              </span>
               {i < STEPS.length - 1 && <span className="text-white/20 text-[10px]">→</span>}
             </span>
           ))}
@@ -73,10 +76,12 @@ export default function Done({ onRestart, repoUrl }) {
         transition={{ delay: 1.2 }}
         className="flex flex-wrap items-center justify-center gap-4"
       >
-        <button className="btn-ghost" onClick={onRestart}>↺ 重新演示</button>
+        <button className="btn-ghost gap-2" onClick={onRestart}>
+          <RotateCcw size={13} strokeWidth={1.8} /> 重新演示
+        </button>
         {repoUrl && (
-          <a className="btn-ghost" href={repoUrl} target="_blank" rel="noreferrer">
-            ⌘ GitHub 源码
+          <a className="btn-ghost gap-2" href={repoUrl} target="_blank" rel="noreferrer">
+            <Code2 size={13} strokeWidth={1.8} /> GitHub 源码
           </a>
         )}
       </motion.div>

@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { ArrowUpRight } from "lucide-react"
 import { BRAND } from "../../data/agent"
 
 const PIPELINE = ["我能申请哪里", "作品集缺什么", "接下来做什么", "专业服务", "预约 · 支付"]
@@ -23,7 +24,7 @@ export default function Hero({ onStart }) {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="flex flex-wrap items-center gap-x-5 gap-y-2.5 mb-8 eyebrow"
           >
-            <span><span className="dot-a">●</span> ACADEMY LINE · 作品集学院</span>
+            <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-academy inline-block" /> ACADEMY LINE · 作品集学院</span>
             <span className="text-fg3">ALIPAY AGENT AWARD · 消费新体验</span>
             <span className="text-fg3">SHANGHAI · 31.23N 121.47E</span>
           </motion.div>
@@ -86,7 +87,7 @@ export default function Hero({ onStart }) {
           >
             <button className="btn-gold" onClick={onStart}>
               开始规划
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">↗</span>
+              <ArrowUpRight size={16} strokeWidth={2} />
             </button>
             <span className="font-mono text-[12px] text-fg3">全程演示约 3 分钟 · 数据为示例</span>
           </motion.div>

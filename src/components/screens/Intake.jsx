@@ -1,7 +1,22 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
+import { Upload, Check, TriangleAlert, X, FileText } from "lucide-react"
 import { STUDENT, PORTFOLIO } from "../../data/agent"
 import { ScreenHead, AgentBar } from "../ui"
+
+function DetectTag({ label }) {
+  const warn = label.includes("⚠")
+  const miss = label.includes("✕")
+  const ok = label.includes("✓")
+  const text = label.replace(/[⚠✕✓]/g, "").trim()
+  const Icon = warn ? TriangleAlert : miss ? X : ok ? Check : null
+  return (
+    <span className={`tag !px-2 !py-0.5 !text-[10px] ${warn || miss ? "tag-red" : ok ? "tag-ice" : ""}`}>
+      {Icon && <Icon size={9} strokeWidth={2.4} />}
+      {text}
+    </span>
+  )
+}
 
 // 解析状态机：idle → parsing → done
 export default function Intake({ onNext }) {
@@ -102,11 +117,10 @@ export default function Intake({ onNext }) {
           {stage === "idle" && (
             <div className="flex-1 flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 bg-white/[0.015] py-12 px-6 text-center cursor-pointer hover:border-gold/40 hover:bg-gold/[0.02] transition-all duration-300">
               <div className="relative mb-5">
-                <div className="absolute inset-0 rounded-full bg-gold/15 blur-xl" />
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" className="relative">
-                  <path d="M12 16V4m0 0 4 4m-4-4L8 8" stroke="#e2c179" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="rgba(255,255,255,0.4)" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
+                <div className="absolute inset-0 rounded-full bg-academy/15 blur-xl" />
+                <span className="relative grid place-items-center w-11 h-11 rounded-full border border-academy/30 bg-academy/[0.06]">
+                  <Upload size={20} strokeWidth={1.6} className="text-academy" />
+                </span>
               </div>
               <div className="text-white/75 text-sm mb-1.5">拖入作品集 PDF，或点击上传</div>
               <div className="font-mono text-[11px] text-white/35">支持 PDF / 图片合集 · ≤ 200MB</div>
@@ -119,16 +133,18 @@ export default function Intake({ onNext }) {
           {stage !== "idle" && (
             <div className="flex-1 flex flex-col">
               {/* 文件头 */}
-              <div className="flex items-center gap-3 rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-red-500/10 border border-red-400/20 grid place-items-center font-mono text-[10px] text-red-300">
-                  PDF
-                </div>
+              <div className="flex items-center gap-3 rounded-xl bg-[rgba(237,237,232,0.03)] border border-[rgba(237,237,232,0.07)] px-4 py-3 mb-4">
+                <span className="grid place-items-center w-9 h-9 rounded-lg border border-[rgba(237,237,232,0.12)] text-fg2">
+                  <FileText size={16} strokeWidth={1.6} />
+                </span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[13px] text-white/85 truncate">{PORTFOLIO.file}</div>
-                  <div className="font-mono text-[10px] text-white/35 mt-0.5">{PORTFOLIO.size}</div>
+                  <div className="text-[13px] text-fg truncate">{PORTFOLIO.file}</div>
+                  <div className="font-mono text-[10px] text-fg3 mt-0.5">{PORTFOLIO.size}</div>
                 </div>
                 {stage === "done" && (
-                  <span className="text-ice text-lg">✓</span>
+                  <span className="grid place-items-center w-6 h-6 rounded-full bg-studio/15 text-studio">
+                    <Check size={13} strokeWidth={2.4} />
+                  </span>
                 )}
               </div>
 
@@ -193,18 +209,7 @@ export default function Intake({ onNext }) {
                           >
                             <div className="flex flex-wrap gap-1.5 pt-0.5">
                               {p.detected.map((d) => (
-                                <span
-                                  key={d}
-                                  className={`tag !px-2 !py-0.5 !text-[10px] ${
-                                    d.includes("⚠") || d.includes("✕")
-                                      ? "tag-red"
-                                      : d.includes("✓")
-                                        ? "tag-ice"
-                                        : ""
-                                  }`}
-                                >
-                                  {d}
-                                </span>
+                                <DetectTag key={d} label={d} />
                               ))}
                             </div>
                           </motion.div>

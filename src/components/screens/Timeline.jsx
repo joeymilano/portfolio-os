@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Flag } from "lucide-react"
 import { TIMELINE, daysUntil } from "../../data/agent"
 import { ScreenHead, useCountUp } from "../ui"
 
@@ -94,8 +95,16 @@ export default function Timeline({ onNext }) {
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   <span className="font-mono text-[11px] text-gold/80 tracking-wider">{p.month}</span>
                   <span className="text-[15px] font-semibold text-white/92">{p.title}</span>
-                  {isActive && <span className="tag tag-ice !text-[10px]">● 进行中</span>}
-                  {isDeadline && <span className="tag tag-gold !text-[10px]">⚑ 递交窗口</span>}
+                  {isActive && (
+                    <span className="tag tag-ice !text-[10px] gap-1.5">
+                      <span className="live-dot !w-1.5 !h-1.5" /> 进行中
+                    </span>
+                  )}
+                  {isDeadline && (
+                    <span className="tag tag-gold !text-[10px] gap-1.5">
+                      <Flag size={9} strokeWidth={2.2} /> 递交窗口
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {p.tasks.map((t) => (

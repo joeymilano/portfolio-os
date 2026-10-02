@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Check } from "lucide-react"
 import { BRAND } from "../data/agent"
 
 export const STEPS = [
@@ -36,9 +37,9 @@ export default function Rail({ current, visited, onJump }) {
               }`}
             >
               <span
-                className={`font-mono text-[11px] ${active ? "text-gold" : done ? "text-white/50" : "text-white/40"}`}
+                className={`font-mono text-[11px] ${active ? "text-academy" : done ? "text-fg2" : "text-fg3"}`}
               >
-                {done ? "✓" : s.num}
+                {done ? <Check size={12} strokeWidth={2.4} className="inline" /> : s.num}
               </span>
               <span className="flex-1 min-w-0">
                 <span

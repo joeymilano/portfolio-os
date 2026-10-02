@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react"
 import { motion } from "motion/react"
+import { Focus, Boxes, Clapperboard, Sparkles } from "lucide-react"
 import { RADAR, VERDICT, FINDINGS } from "../../data/agent"
 import { ScreenHead, AgentBar, Radar, ScoreBar, useCountUp } from "../ui"
+
+const FINDING_ICONS = {
+  focus: Focus,
+  boxes: Boxes,
+  clapper: Clapperboard,
+  sparkles: Sparkles,
+}
 
 const LEVEL_STYLE = {
   critical: { tag: "tag-red", label: "关键", ring: "hover:border-red-300/30" },
@@ -140,18 +148,25 @@ export default function Analysis({ onNext }) {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <span className={`grid place-items-center w-9 h-9 rounded-xl border text-[15px] ${
-                    f.level === "critical"
-                      ? "border-red-300/25 bg-red-300/[0.06] text-red-300"
-                      : f.level === "highlight"
-                        ? "border-ice/25 bg-ice/[0.06] text-ice"
-                        : "border-gold/25 bg-gold/[0.06] text-gold"
-                  }`}>{f.icon}</span>
+                  {(() => {
+                    const Icon = FINDING_ICONS[f.icon] || Sparkles
+                    return (
+                      <span className={`grid place-items-center w-9 h-9 rounded-xl border ${
+                        f.level === "critical"
+                          ? "border-red-300/25 bg-red-300/[0.06] text-red-300"
+                          : f.level === "highlight"
+                            ? "border-studio/25 bg-studio/[0.06] text-studio"
+                            : "border-academy/25 bg-academy/[0.06] text-academy"
+                      }`}>
+                        <Icon size={16} strokeWidth={1.8} />
+                      </span>
+                    )
+                  })()}
                   <div>
                     <div className={`tag ${s.tag} !text-[10px]`}>{f.levelText}</div>
                   </div>
                 </div>
-                <span className="font-mono text-[10px] text-white/25">F{i + 1}</span>
+                <span className="font-mono text-[10px] text-fg3">F{i + 1}</span>
               </div>
 
               <h3 className="text-[15.5px] font-semibold text-white/92 mb-2.5">{f.title}</h3>
